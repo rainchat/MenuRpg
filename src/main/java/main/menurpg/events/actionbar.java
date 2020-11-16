@@ -24,9 +24,6 @@ public class actionbar implements Listener {
     private HashMap<Player, PlayerMenu> pMenu = new HashMap<>();
     private FileManager fileManager = new FileManager(main.getPlugin(main.class));
 
-    public actionbar(){
-
-    }
 
     @EventHandler
     public void onF(PlayerSwapHandItemsEvent e){

@@ -12,7 +12,7 @@ public final class main extends JavaPlugin {
 
         FileManager fileManager = new FileManager(this);
         fileManager.getConfig("config.yml").copyDefaults(true).save();
-        this.getCommand("font").setExecutor(new FontCommand());
+        this.getCommand("rpgmenu").setExecutor(new FontCommand());
         getServer().getPluginManager().registerEvents(new actionbar(),this);
 
     }
