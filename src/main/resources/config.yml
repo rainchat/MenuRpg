@@ -1,0 +1,20 @@
+#Нажмите шифт + F чтобы открыть меню
+menu:
+  line1:
+    name: спавн
+    command: spawn
+  line2:
+    name: сетспавн
+    command: setspawn
+  line3:
+    name: баланс
+    command: money
+  line4:
+    name: день
+    command: time set day
+  line5:
+    name: ночь
+    command: time set night
+  line6:
+    name: привет
+    command: me привет
