@@ -3,5 +3,6 @@ version: ${project.version}
 main: main.menurpg.main
 api-version: 1.13
 authors: [ rain_chat ]
+softdepend: [PlaceholderAPI]
 commands:
   rpgmenu:

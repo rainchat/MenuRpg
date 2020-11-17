@@ -2,30 +2,82 @@ package main.menurpg.fontmenu;
 
 
 import main.menurpg.filemenager.FileManager;
+import main.menurpg.filemenager.PlayerMenu;
 import main.menurpg.fontmenu.fontlevels.*;
 import main.menurpg.main;
+import main.menurpg.utility.Executor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 public class FontMenu {
     private FileManager fileManager = new FileManager(main.getPlugin(main.class));
     private BaseComponent textcopy = new TextComponent("");
-    private int x = 0;
+    static HashMap<Player, PlayerMenu> Pmenu = new HashMap<>();
 
 
-    public FontMenu(){
-
+    public void addPlayer(Player player){
+        List<String> text = new ArrayList<>();
+        for (String s : fileManager.getConfig("config.yml").get().getConfigurationSection("menu").getKeys(false)){
+            text.add(fileManager.getConfig("config.yml").get().getString("menu."+s+".name"));
+        }
+        Pmenu.put(player,new PlayerMenu(6,text));
     }
-    public BaseComponent getText(int z){
-        x = z;
+
+    public void changePos(int operator, Player player){
+        PlayerMenu temp  = Pmenu.get(player);
+        temp.addEnd(operator);
+        Pmenu.put(player,temp);
+    }
+
+    public void activateCommand(Player player){
+        int x = Pmenu.get(player).getLine();
+        int z = 0;
+        for (String s : fileManager.getConfig("config.yml").get().getConfigurationSection("menu").getKeys(false)){
+            z++;
+            if (z==x){
+                List<String> command = new ArrayList<>();
+                command = fileManager.getConfig("config.yml").get().getStringList("menu."+s+".actions");
+                Executor test = new Executor(command,player);
+                return;
+            }
+
+        }
+    }
+
+    public BaseComponent getText(Player player){
         setStartSpace();
-        setLine1();
-        setLine2();
-        setLine3();
-        setLine4();
-        setLine5();
-        setLine6();
+        setLine1(player);
+        setLine2(player);
+        setLine3(player);
+        setLine4(player);
+        setLine5(player);
+        setLine6(player);
         return textcopy;
+    }
+
+    public List<Player> getActivePlayers(){
+        List<Player> playerList = new ArrayList<>();
+        for (Player p : Pmenu.keySet()){
+            playerList.add(p);
+        }
+        return playerList;
+    }
+
+    public void removePlayer(Player p){
+        Pmenu.remove(p);
+    }
+    public boolean isConteinPlayer(Player p){
+        if (Pmenu.containsKey(p)){
+            return true;
+        }
+        return false;
     }
 
     public void setStartSpace(){
@@ -37,10 +89,10 @@ public class FontMenu {
         return;
     }
 
-    public void setLine1() {
-        String z = (String) fileManager.getConfig("config.yml").get().get("menu.line1.name");
+    public void setLine1(Player player) {
+        String z = Pmenu.get(player).getLine(0);
         char y;
-        if (x == 1){
+        if (Pmenu.get(player).getCursor() == 1){
             y = '\uE902';
         }
         else {
@@ -61,11 +113,11 @@ public class FontMenu {
 
     }
 
-    public void setLine2(){
-        String z = (String) fileManager.getConfig("config.yml").get().get("menu.line2.name");
+    public void setLine2(Player player){
+        String z = Pmenu.get(player).getLine(1);
         char y;
         textcopy.addExtra(Negative_Space.getSpase(8*14));
-        if (x == 2){
+        if (Pmenu.get(player).getCursor() == 2){
             y = '\uE904';
         }
         else {
@@ -84,11 +136,11 @@ public class FontMenu {
         }
     }
 
-    public void setLine3(){
-        String z = (String) fileManager.getConfig("config.yml").get().get("menu.line3.name");
+    public void setLine3(Player player){
+        String z = Pmenu.get(player).getLine(2);
         char y;
         textcopy.addExtra(Negative_Space.getSpase(8*14));
-        if (x == 3){
+        if (Pmenu.get(player).getCursor() == 3){
             y = '\uE906';
         }
         else {
@@ -107,11 +159,11 @@ public class FontMenu {
         }
     }
 
-    public void setLine4(){
-        String z = (String) fileManager.getConfig("config.yml").get().get("menu.line4.name");
+    public void setLine4(Player player){
+        String z = Pmenu.get(player).getLine(3);
         char y;
         textcopy.addExtra(Negative_Space.getSpase(8*14));
-        if (x == 4){
+        if (Pmenu.get(player).getCursor() == 4){
             y = '\uE908';
         }
         else {
@@ -130,11 +182,11 @@ public class FontMenu {
         }
     }
 
-    public void setLine5(){
-        String z = (String) fileManager.getConfig("config.yml").get().get("menu.line5.name");
+    public void setLine5(Player player){
+        String z = Pmenu.get(player).getLine(4);
         char y;
         textcopy.addExtra(Negative_Space.getSpase(8*14));
-        if (x == 5){
+        if (Pmenu.get(player).getCursor() == 5){
             y = '\uE910';
         }
         else {
@@ -153,11 +205,11 @@ public class FontMenu {
         }
     }
 
-    public void setLine6(){
-        String z = (String) fileManager.getConfig("config.yml").get().get("menu.line6.name");
+    public void setLine6(Player player){
+        String z = Pmenu.get(player).getLine(5);
         char y;
         textcopy.addExtra(Negative_Space.getSpase(8*14));
-        if (x == 6){
+        if (Pmenu.get(player).getCursor() == 6){
             y = '\uE912';
         }
         else {

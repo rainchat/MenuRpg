@@ -33,7 +33,7 @@ public enum FrontLevel1 {
     э('э', '\uEf30'),
     ю('ю', '\uEf31'),
     я('я', '\uEf32'),
-    DEFAULT('z', '\uEf01');
+    DEFAULT('z', '\uEf00');
 
 
     private char character;

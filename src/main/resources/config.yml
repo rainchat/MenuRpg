@@ -1,20 +1,46 @@
-#Нажмите шифт + F чтобы открыть меню
+# Действия которые можно использовать:
+
+# Написать игроку -  tell: сообщение
+# Выполнить команду через консоль - console: команда
+# Выполнить команду от игрока player:
+# Закрыть меню - closemenu
+
+# Чтобы Открыть/Закрыть меню используйте shift+F
+# Для версий 1.1 и ниже
+# Ограничения на количество букв в меню - 13
+# Поддержка только русских букв (все неизвестные буквы заменяются на пробелы)
+
+
+
 menu:
-  line1:
+  spawn:
     name: спавн
-    command: spawn
-  line2:
-    name: сетспавн
-    command: setspawn
-  line3:
-    name: баланс
-    command: money
-  line4:
+    actions:
+      - closemenu
+      - tell: поздравляем, вы телепортированы на спавн
+  day:
     name: день
-    command: time set day
-  line5:
+    actions:
+      - console: time set day
+      - tell: Время день
+  night:
     name: ночь
-    command: time set night
-  line6:
+    actions:
+      - console: time set night
+      - tell: Время ночь
+  home:
+    name: домой
+    actions:
+      - closemenu
+      - tell: Дом милый дом
+  hello:
     name: привет
-    command: me привет
+    actions:
+      - closemenu
+      - tell: привет %player_name%
+  buy:
+    name: пока
+    actions:
+      - closemenu
+      - tell: пока %player_name%
+
