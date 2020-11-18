@@ -23,6 +23,7 @@ public class Executor {
     public void start(){
 
         for (String s : cmd){
+            s = color.parseHexString(s);
             s = PlaceholderAPI.setPlaceholders(p, s);
             String[] result = s.split(" ", 2);
             action(result[0],result[1]);
