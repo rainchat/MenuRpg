@@ -1,8 +1,11 @@
 package main.menurpg.utility;
 
+import main.menurpg.events.actionbar;
 import main.menurpg.fontmenu.FontMenu;
 import main.menurpg.main;
 import me.clip.placeholderapi.PlaceholderAPI;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.block.data.type.Switch;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
@@ -11,6 +14,7 @@ import java.util.List;
 
 public class Executor {
     private FontMenu FM = new FontMenu();
+    private actionbar Abar = new actionbar();
     private List<String> cmd;
     private Player p;
 
@@ -44,7 +48,11 @@ public class Executor {
                 break;
             case "closemenu:":
                 FM.removePlayer(p);
+                p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(""));
                 break;
+            case "openmenu:":
+                FM.addPlayer(p,action);
+                Abar.start();
         }
     }
 }

@@ -1,0 +1,30 @@
+scrolls:
+  spawn:
+    name: spawn
+    actions:
+      - 'closemenu: 1'
+      - 'player: spawn'
+  home:
+    name: home
+    actions:
+      - 'player: home'
+      - 'closemenu: 1'
+  shop:
+    name: shop
+    actions:
+      - 'player: warp shop'
+      - 'tell:  <#68848f>Время ночь'
+  pvp:
+    name: pvp
+    actions:
+      - 'closemenu: 1'
+      - 'tell: &2Дом милый дом'
+  parkour:
+    name: parkour
+    actions:
+      - 'closemenu: 1'
+      - 'tell: &7Паркур новое движение'
+  back:
+    name: назад
+    actions:
+      - 'openmenu: mainmenu'

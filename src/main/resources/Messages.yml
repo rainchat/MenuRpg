@@ -1,0 +1,11 @@
+Preffix: "&f[&aRpgMenu&f] "
+Message:
+  No-Permissions: "&cУ вас нет прав на использование этой команды"
+  Menu-Already-open: "&7Меню уже открыто"
+  Menu-Open: "&aМеню открыто!"
+  Menu-Close: "&cМеню закрыто!"
+  Menu-Open-Err: "&7Меню не может быть открыто, так как открыто &cдругое &7меню"
+  Menu-Disable: "&cМеню выключено.."
+  Not-A-Menu: "&7Такого меню не существует"
+  Player-Not-Online: "&cВыбранный игрок не в сети"
+  Reload: "&7Все конфиги перезагружены"

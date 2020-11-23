@@ -1,5 +1,6 @@
 package main.menurpg.filemenager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerMenu {
@@ -7,20 +8,23 @@ public class PlayerMenu {
     private int startline;
     private int cursortext;
     private int cursor;
-    private List<String> text;
+    private int textSize;
+    private List<String> text = new ArrayList<>();
+    private String menu;
 
-    public PlayerMenu(int number, List<String> text){
+    public PlayerMenu(int number, int textSize, String menu, List<String> text){
         this.number = number;
         this.startline = 0;
         this.cursor = 1;
         this.cursortext = 1;
+        this.textSize = textSize;
         this.text = text;
+        this.menu = menu;
     }
 
     public int getNumber(){
         return number;
     }
-
 
 
     public void setNumber(int number){
@@ -30,7 +34,7 @@ public class PlayerMenu {
 
     public void addEnd(int plus){
         if (cursor==this.number && plus == 1){
-            if (startline+this.number<text.size()){
+            if (startline+this.number<textSize){
                 startline++;
             }
             return;
@@ -43,6 +47,10 @@ public class PlayerMenu {
         }
         this.cursor+=plus;
 
+    }
+
+    public String getMenu(){
+        return menu;
     }
 
     public String getLine(int x){

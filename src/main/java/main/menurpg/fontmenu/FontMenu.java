@@ -1,6 +1,7 @@
 package main.menurpg.fontmenu;
 
 
+import main.menurpg.api.Messages;
 import main.menurpg.filemenager.FileManager;
 import main.menurpg.filemenager.PlayerMenu;
 import main.menurpg.fontmenu.fontlevels.*;
@@ -9,26 +10,52 @@ import main.menurpg.utility.Executor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
 
 public class FontMenu {
-    private FileManager fileManager = new FileManager(main.getPlugin(main.class));
+    private static FileManager fileManager = FileManager.getInstance();
     private BaseComponent textcopy = new TextComponent("");
     static HashMap<Player, PlayerMenu> Pmenu = new HashMap<>();
 
 
-    public void addPlayer(Player player){
+    public void addPlayer(Player player, String menu){
         List<String> text = new ArrayList<>();
-        for (String s : fileManager.getConfig("config.yml").get().getConfigurationSection("menu").getKeys(false)){
-            text.add(fileManager.getConfig("config.yml").get().getString("menu."+s+".name"));
+
+
+        for (String files : fileManager.getAllMenu()) {
+            try {
+                if (files.equalsIgnoreCase(menu)){
+                FileConfiguration file = fileManager.getFile(files).getFile();
+                for (String s: file.getConfigurationSection("scrolls").getKeys(false)) {
+                    text.add(file.getString("scrolls." + s + ".name"));;
+                }
+                    break;
+                }
+
+
+            } catch (Exception e) {
+                Bukkit.getLogger().log(Level.WARNING, fileManager.getPrefix() + "There was an error while loading the items");
+                e.printStackTrace();
+            }
+
+
         }
-        Pmenu.put(player,new PlayerMenu(6,text));
+        if (text.isEmpty()){
+            player.sendMessage(Messages.NOT_A_MENU.getmassage());
+            return;
+        }
+
+        Pmenu.put(player, new PlayerMenu(6, text.size(), menu, text));
     }
+
+
 
     public void changePos(int operator, Player player){
         PlayerMenu temp  = Pmenu.get(player);
@@ -39,11 +66,12 @@ public class FontMenu {
     public void activateCommand(Player player){
         int x = Pmenu.get(player).getLine();
         int z = 0;
-        for (String s : fileManager.getConfig("config.yml").get().getConfigurationSection("menu").getKeys(false)){
+        FileConfiguration file = fileManager.getFile(Pmenu.get(player).getMenu()).getFile();
+        for (String s : file.getConfigurationSection("scrolls").getKeys(false)){
             z++;
             if (z==x){
                 List<String> command = new ArrayList<>();
-                command = fileManager.getConfig("config.yml").get().getStringList("menu."+s+".actions");
+                command = file.getStringList("scrolls." + s + ".actions");
                 Executor test = new Executor(command,player);
                 return;
             }
@@ -228,5 +256,6 @@ public class FontMenu {
         }
     }
 }
+
 
 
