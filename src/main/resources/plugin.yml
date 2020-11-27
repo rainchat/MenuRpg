@@ -6,3 +6,4 @@ authors: [ rain_chat ]
 softdepend: [PlaceholderAPI]
 commands:
   rpgmenu:
+  rpgresourse:

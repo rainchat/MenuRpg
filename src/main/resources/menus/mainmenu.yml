@@ -1,31 +1,44 @@
+# Actions that can be used:
+#
+# Write to player - tell: message
+# Run command via console - console: command
+# Run command from player - player: command
+# Close menu - closemenu: 1
+# Open another menu - openmenu: <menu name>
+#
+# To Open / Close the menu use shift + F
+#
+# For versions 1.4
+# Limitations on the number of charrs in the menu - 14
+# Support support for Russian and English charrs (all unknown letters are replaced with spaces)
 scrolls:
   close:
-    name: закрыть
+    name: close
     actions:
       - 'closemenu: 1'
   day:
-    name: день
+    name: day
     actions:
       - 'console: time set day'
-      - 'tell:  <#55eb34>Время день'
+      - 'tell:  <#55eb34>time day'
   night:
-    name: ночь
+    name: night
     actions:
       - 'console: time set night'
-      - 'tell:  <#68848f>Время ночь'
+      - 'tell:  <#68848f>time night'
   home:
-    name: привет мир
+    name: hello
     actions:
       - 'closemenu: 1'
-      - 'player: me &aпривет мир'
+      - 'player: me &ahi world'
   teleport:
-    name: телепорты
+    name: teleport
     actions:
       - 'closemenu: 1'
-      - 'tell: Выберите куда хотите телепортироваться &a%player_name%'
+      - 'tell: Choose where you want to teleport &a%player_name%'
       - 'openmenu: teleports'
   buy:
-    name: закрыть
+    name: closemenu
     actions:
       - 'closemenu: 1'
-      - 'tell: &aпока %player_name%'
+      - 'tell: &abuy %player_name%'

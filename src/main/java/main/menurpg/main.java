@@ -2,6 +2,8 @@ package main.menurpg;
 
 import main.menurpg.commands.FontCommand;
 import main.menurpg.commands.FronCommandHendler;
+import main.menurpg.commands.ResourseCommand;
+import main.menurpg.events.ResourcePack;
 import main.menurpg.events.actionbar;
 import main.menurpg.filemenager.FileManager;
 import org.bukkit.Bukkit;
@@ -34,8 +36,10 @@ public final class main extends JavaPlugin implements Listener {
 
 
         this.getCommand("rpgmenu").setExecutor(new FontCommand());
+        this.getCommand("rpgresourse").setExecutor(new ResourseCommand());
         this.getCommand("rpgmenu").setTabCompleter(new FronCommandHendler());
         getServer().getPluginManager().registerEvents(new actionbar(),this);
+        getServer().getPluginManager().registerEvents(new ResourcePack(),this);
 
     }
 

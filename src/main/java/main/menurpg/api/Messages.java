@@ -7,14 +7,17 @@ import org.bukkit.entity.Player;
 
 public enum Messages {
 
-    NO_PERMISSION("Message.No-Permissions", "&cУ вас нет прав на использование этой команды"),
-    MENU_ALREADY_OPEN("Message.Menu-Already-open", "&cМеню уже открыто"),
-    MENU_OPEN("Message.Menu-Open", "&7Меню открыто"),
-    MENU_CLOSE("Message.Menu-Close", "&7Меню Закрыто"),
-    MENU_OPEN_ERR("Message.Menu-Open-Err", "&7Меню не может быть открыто, так как открыто &cдругое &7меню"),
-    NOT_A_MENU("Message.Not-A-Menu", "&7Такого меню не существует"),
-    PLAYERS_NOT_ONLINE("Message.Player-Not-Online", "&cВыбранный игрок не в сети"),
-    RELOAD("Message.Reload", "&7Все конфиги перезагружены...");
+    NO_PERMISSION("Message.No-Permissions", "&cYou do not have permission to use this command"),
+    MENU_ALREADY_OPEN("Message.Menu-Already-open", "&cThe menu is already open"),
+    MENU_OPEN("Message.Menu-Open", "&7Menu is open"),
+    MENU_CLOSE("Message.Menu-Close", "&7Menu is closed"),
+    NOT_A_MENU("Message.Not-A-Menu", "&7This menu does not exist.."),
+    PLAYERS_NOT_ONLINE("Message.Player-Not-Online", "&cThe selected player is offline.."),
+    RESOURSEPACK_ERROR("Message.Resoursepack-err-download", "&7Download error.."),
+    RESOURSEPACK_LOAD("Message.Resoursepack-load", "&7Resourcepack was loaded successfully.."),
+    RESOURSEPACK_CANCEL("Message.Resoursepack-cancel", "&7You canceled downloading the resource pack.."),
+    RESOURSEPACK_KICK("Message.Resoursepack-kick", "&7You were kicked, because you did not\n&7download our&6 Server Resource Pack&c!\n\n&aActivate&6 Resourcepacks&a in your Server-Settings to play!"),
+    RELOAD("Message.Reload", "&7All configs have been reloaded..");
 
     private String path;
     private String defaultMessage;
@@ -25,6 +28,14 @@ public enum Messages {
     }
 
 
+    public String getmassage(Boolean preffix){
+        if (FileManager.Files.LANGUAGE.getFile().getString(path) == null){
+            return color.parseHexString(defaultMessage);
+        }
+        else{
+            return color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString(path));
+        }
+    }
 
     public String getmassage(){
         if (FileManager.Files.LANGUAGE.getFile().getString(path) == null){

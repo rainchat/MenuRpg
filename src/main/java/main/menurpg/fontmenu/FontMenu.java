@@ -80,7 +80,8 @@ public class FontMenu {
     }
 
     public BaseComponent getText(Player player){
-        setStartSpace();
+        //setStartSpace();
+        textcopy.addExtra(Negative_Space.getStartSpace());
         setLine1(player);
         setLine2(player);
         setLine3(player);
@@ -126,133 +127,140 @@ public class FontMenu {
         else {
             y = '\uE901';
         }
-
         textcopy.addExtra(y + "");
-        textcopy.addExtra(Negative_Space.getSpase(8 * 14));
+        textcopy.addExtra(Negative_Space.getMenuLength(-1));
+
         for (char s : z.toCharArray()) {
             FrontLevel1 dFI = FrontLevel1.getDefaultFontInfo(s);
             y = dFI.getfont();
             textcopy.addExtra(y + "");
         }
-        for (int i = 0; i < (13 - z.length()); i++) {
-            y = '\uEf00';
-            textcopy.addExtra(y + "");
+
+        if (!z.isEmpty()){
+            textcopy.addExtra(Negative_Space.getCharLength(z.length()+1));
         }
+
 
     }
 
     public void setLine2(Player player){
         String z = Pmenu.get(player).getLine(1);
         char y;
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
         if (Pmenu.get(player).getCursor() == 2){
             y = '\uE904';
         }
         else {
             y = '\uE903';
         }
+
         textcopy.addExtra(y+"");
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
+        textcopy.addExtra(Negative_Space.getMenuLength(-1));
+
         for (char s : z.toCharArray()){
             FrontLevel2 dFI = FrontLevel2.getDefaultFontInfo(s);
             y = dFI.getfont();
             textcopy.addExtra(y+"");
         }
-        for (int i = 0; i < (13-z.length()); i++){
-            y = '\uE100';
-            textcopy.addExtra(y+"");
+
+        if (!z.isEmpty()){
+            textcopy.addExtra(Negative_Space.getCharLength(z.length()+1));
         }
     }
 
     public void setLine3(Player player){
         String z = Pmenu.get(player).getLine(2);
         char y;
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
         if (Pmenu.get(player).getCursor() == 3){
             y = '\uE906';
         }
         else {
             y = '\uE905';
         }
+
         textcopy.addExtra(y+"");
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
+        textcopy.addExtra(Negative_Space.getMenuLength(-1));
+
         for (char s : z.toCharArray()){
             FrontLevel3 dFI = FrontLevel3.getDefaultFontInfo(s);
             y = dFI.getfont();
             textcopy.addExtra(y+"");
         }
-        for (int i = 0; i < (13-z.length()); i++){
-            y = '\uE200';
-            textcopy.addExtra(y+"");
+
+        if (!z.isEmpty()){
+            textcopy.addExtra(Negative_Space.getCharLength(z.length()+1));
         }
     }
 
     public void setLine4(Player player){
         String z = Pmenu.get(player).getLine(3);
         char y;
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
         if (Pmenu.get(player).getCursor() == 4){
             y = '\uE908';
         }
         else {
             y = '\uE907';
         }
+
         textcopy.addExtra(y+"");
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
+        textcopy.addExtra(Negative_Space.getMenuLength(-1));
+
         for (char s : z.toCharArray()){
             FrontLevel4 dFI = FrontLevel4.getDefaultFontInfo(s);
             y = dFI.getfont();
             textcopy.addExtra(y+"");
         }
-        for (int i = 0; i < (13-z.length()); i++){
-            y = '\uE300';
-            textcopy.addExtra(y+"");
+
+        if (!z.isEmpty()){
+            textcopy.addExtra(Negative_Space.getCharLength(z.length()+1));
         }
     }
 
     public void setLine5(Player player){
         String z = Pmenu.get(player).getLine(4);
         char y;
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
         if (Pmenu.get(player).getCursor() == 5){
             y = '\uE910';
         }
         else {
             y = '\uE909';
         }
+
         textcopy.addExtra(y+"");
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
+        textcopy.addExtra(Negative_Space.getMenuLength(-1));
+
         for (char s : z.toCharArray()){
             FrontLevel5 dFI = FrontLevel5.getDefaultFontInfo(s);
             y = dFI.getfont();
             textcopy.addExtra(y+"");
         }
-        for (int i = 0; i < (13-z.length()); i++){
-            y = '\uE400';
-            textcopy.addExtra(y+"");
+
+        if (!z.isEmpty()){
+            textcopy.addExtra(Negative_Space.getCharLength(z.length()+1));
         }
     }
 
     public void setLine6(Player player){
         String z = Pmenu.get(player).getLine(5);
         char y;
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
         if (Pmenu.get(player).getCursor() == 6){
             y = '\uE912';
         }
         else {
             y = '\uE911';
         }
+
+
         textcopy.addExtra(y+"");
-        textcopy.addExtra(Negative_Space.getSpase(8*14));
+        textcopy.addExtra(Negative_Space.getMenuLength(-1));
+
         for (char s : z.toCharArray()){
             FrontLevel6 dFI = FrontLevel6.getDefaultFontInfo(s);
             y = dFI.getfont();
             textcopy.addExtra(y+"");
         }
-        for (int i = 0; i < (13-z.length()); i++){
-            y = '\uE500';
-            textcopy.addExtra(y+"");
+
+        if (!z.isEmpty()){
+            textcopy.addExtra(Negative_Space.getCharLength(z.length()+1));
         }
     }
 }

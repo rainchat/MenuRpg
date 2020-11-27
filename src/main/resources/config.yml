@@ -1,14 +1,22 @@
-# Действия которые можно использовать:
-#
-# Написать игроку -  tell: сообщение
-# Выполнить команду через консоль - console: команда
-# Выполнить команду от игрока - player: команда
-# Закрыть меню - closemenu: 1
-# Открыть другое меню - openmenu: <имя меню>
-#
-# Чтобы Открыть/Закрыть меню используйте shift+F
-#
-# Для версий 1.3
-# Ограничения на количество букв в меню - 13
-# Поддержка поддержка русских и английских букв (все неизвестные буквы заменяются на пробелы)
+#Menu open on action "shift + F"
+# permissions to open rpgmenu.use
 MainMenu: mainmenu
+
+# do not touch these settings if you do not know what you are doing
+settings:
+  # position of menu
+  menupos: -600
+  charlength: 7
+  menulength: 140
+
+
+Resoursepack:
+
+  # Define your Direct-Download-Link to your Resource Pack
+  download-link: https://www.dropbox.com/s/ce9sh5cwn0t63w5/rpgmenu.zip?dl=1
+
+  #download resource pack at join or no
+  download-when-join: true
+
+  #kick the player if he has not downloaded the resource
+  kick-on-deny: true

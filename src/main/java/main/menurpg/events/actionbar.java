@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class actionbar implements Listener {
     private static FileManager fileManager = FileManager.getInstance();
 
 
+
     @EventHandler
     public void onF(PlayerSwapHandItemsEvent e){
         if (e.getPlayer().isSneaking()){
@@ -37,7 +39,8 @@ public class actionbar implements Listener {
                 e.getPlayer().sendMessage(Messages.MENU_CLOSE.getmassage());
                 e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(""));
             }
-            else {
+            else if (e.getPlayer().hasPermission("rpgmenu.use")) {
+
                 e.getPlayer().sendMessage(Messages.MENU_OPEN.getmassage());
                 e.getPlayer().getInventory().setHeldItemSlot(1);
                 MenuText.addPlayer(e.getPlayer(), FileManager.Files.CONFIG.getFile().getString("MainMenu"));
