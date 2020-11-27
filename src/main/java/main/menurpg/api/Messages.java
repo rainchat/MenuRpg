@@ -1,9 +1,7 @@
 package main.menurpg.api;
 
 import main.menurpg.filemenager.FileManager;
-import main.menurpg.utility.color;
-import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.entity.Player;
+import main.menurpg.utility.Color;
 
 public enum Messages {
 
@@ -19,30 +17,28 @@ public enum Messages {
     RESOURSEPACK_KICK("Message.Resoursepack-kick", "&7You were kicked, because you did not\n&7download our&6 Server Resource Pack&c!\n\n&aActivate&6 Resourcepacks&a in your Server-Settings to play!"),
     RELOAD("Message.Reload", "&7All configs have been reloaded..");
 
-    private String path;
-    private String defaultMessage;
+    private final String path;
+    private final String defaultMessage;
 
-    private Messages(String path, String defaultMessage) {
+    Messages(String path, String defaultMessage) {
         this.path = path;
         this.defaultMessage = defaultMessage;
     }
 
 
-    public String getmassage(Boolean preffix){
-        if (FileManager.Files.LANGUAGE.getFile().getString(path) == null){
-            return color.parseHexString(defaultMessage);
-        }
-        else{
-            return color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString(path));
+    public String getmassage(Boolean preffix) {
+        if (FileManager.Files.LANGUAGE.getFile().getString(path) == null) {
+            return Color.parseHexString(defaultMessage);
+        } else {
+            return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString(path));
         }
     }
 
-    public String getmassage(){
-        if (FileManager.Files.LANGUAGE.getFile().getString(path) == null){
-            return color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + defaultMessage);
-        }
-        else{
-            return color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + FileManager.Files.LANGUAGE.getFile().getString(path));
+    public String getmassage() {
+        if (FileManager.Files.LANGUAGE.getFile().getString(path) == null) {
+            return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + defaultMessage);
+        } else {
+            return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + FileManager.Files.LANGUAGE.getFile().getString(path));
         }
     }
 }

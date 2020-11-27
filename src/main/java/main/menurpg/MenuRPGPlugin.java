@@ -4,28 +4,18 @@ import main.menurpg.commands.FontCommand;
 import main.menurpg.commands.FronCommandHendler;
 import main.menurpg.commands.ResourseCommand;
 import main.menurpg.events.ResourcePack;
-import main.menurpg.events.actionbar;
+import main.menurpg.events.ActionBar;
 import main.menurpg.filemenager.FileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class main extends JavaPlugin implements Listener {
+public final class MenuRPGPlugin extends JavaPlugin {
 
-    private FileManager fileManager = FileManager.getInstance();
+    private final FileManager fileManager = FileManager.getInstance();
 
     @Override
     public void onEnable() {
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-
-            Bukkit.getPluginManager().registerEvents(this, this);
-        } else {
-
-            getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
-            Bukkit.getPluginManager().disablePlugin(this);
-        }
-
-
         String mainfolder = "/menus";
         fileManager.logInfo(true)
                 .registerDefaultGenerateFiles("mainmenu.yml", "/menus", mainfolder)
@@ -34,12 +24,11 @@ public final class main extends JavaPlugin implements Listener {
                 .setup(this);
 
 
-
         this.getCommand("rpgmenu").setExecutor(new FontCommand());
         this.getCommand("rpgresourse").setExecutor(new ResourseCommand());
         this.getCommand("rpgmenu").setTabCompleter(new FronCommandHendler());
-        getServer().getPluginManager().registerEvents(new actionbar(),this);
-        getServer().getPluginManager().registerEvents(new ResourcePack(),this);
+        getServer().getPluginManager().registerEvents(new ActionBar(), this);
+        getServer().getPluginManager().registerEvents(new ResourcePack(), this);
 
     }
 
