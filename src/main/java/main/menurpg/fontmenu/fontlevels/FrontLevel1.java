@@ -1,5 +1,6 @@
 package main.menurpg.fontmenu.fontlevels;
 
+@SuppressWarnings("NonAsciiCharacters")
 public enum FrontLevel1 {
     а('а', '\uEf01'),
     б('б', '\uEf02'),
@@ -62,12 +63,19 @@ public enum FrontLevel1 {
     DEFAULT('z', '\uEf00');
 
 
-    private char character;
-    private char font;
+    private final char character;
+    private final char font;
 
     FrontLevel1(char character, char font) {
         this.character = character;
         this.font = font;
+    }
+
+    public static FrontLevel1 getDefaultFontInfo(char c) {
+        for (FrontLevel1 dFI : FrontLevel1.values()) {
+            if (dFI.getCharacter() == c) return dFI;
+        }
+        return FrontLevel1.DEFAULT;
     }
 
     public char getfont() {
@@ -77,15 +85,6 @@ public enum FrontLevel1 {
     public char getCharacter() {
         return this.character;
     }
-
-
-    public static FrontLevel1 getDefaultFontInfo(char c) {
-        for (FrontLevel1 dFI : FrontLevel1.values()) {
-            if (dFI.getCharacter() == c) return dFI;
-        }
-        return FrontLevel1.DEFAULT;
-    }
-
 
 
 }

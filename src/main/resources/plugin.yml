@@ -1,7 +1,7 @@
 name: MenuRpg
 version: ${project.version}
-main: main.menurpg.main
-api-version: 1.13
+main: main.menurpg.MenuRPGPlugin
+api-version: 1.16
 authors: [ rain_chat ]
 softdepend: [PlaceholderAPI]
 commands:

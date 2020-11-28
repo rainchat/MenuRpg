@@ -3,20 +3,16 @@ package main.menurpg.utility;
 import net.md_5.bungee.api.ChatColor;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.awt.Color;
-import java.util.List;
 
-public class color {
+public class Color {
     private static final Pattern HEX_PATTERN = Pattern.compile("<(#[a-fA-F0-9]{6})>");
 
 
     public static boolean serverSupportsHex() {
         try {
-            ChatColor.of(Color.BLACK);
+            ChatColor.of(java.awt.Color.BLACK);
             return true;
         } catch (NoSuchMethodError ignore) {
             return false;
@@ -40,10 +36,10 @@ public class color {
             }
         }
 
-        return org.bukkit.ChatColor.translateAlternateColorCodes('&',text);
+        return org.bukkit.ChatColor.translateAlternateColorCodes('&', text);
     }
 
     public static String parseHexString(@NotNull String text) {
-        return parseHexString(text, color.HEX_PATTERN);
+        return parseHexString(text, Color.HEX_PATTERN);
     }
 }

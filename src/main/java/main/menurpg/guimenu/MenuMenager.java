@@ -6,12 +6,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 public class MenuMenager implements Listener {
 
     @EventHandler
-    public void  onClickInventory(InventoryClickEvent e){
+    public void onClickInventory(InventoryClickEvent e) {
         if (e.getClickedInventory() == null) return;
         if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
         Player player = (Player) e.getWhoClicked();
@@ -19,7 +18,7 @@ public class MenuMenager implements Listener {
         Inventory inv = e.getView().getTopInventory();
         if (inv.getHolder() instanceof MenuHol) {
             int slot = e.getSlot();
-            switch (slot){
+            switch (slot) {
                 case 1:
                     break;
                 case 2:
