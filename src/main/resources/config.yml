@@ -22,9 +22,14 @@ Resoursepack:
 
   # Define your Direct-Download-Link to your Resource Pack
   download-link: https://www.dropbox.com/s/gocd9c433rk2m34/RpgMenu.zip?dl=1
+  # needed for the right work resource pack
+  hash-sha1: e33f8630887e3ad7d6111371c063665f17cbc7c6
 
   #download resource pack at join or no
   download-when-join: false
 
   #kick the player if he has not downloaded the resource
   kick-on-deny: false
+
+
+

@@ -5,7 +5,7 @@ import main.menurpg.commands.FronCommandHendler;
 import main.menurpg.commands.ResourseCommand;
 import main.menurpg.events.ResourcePack;
 import main.menurpg.events.ActionbarEvents;
-import main.menurpg.menagers.ActionbarMenager;
+import main.menurpg.menagers.ActionbarManager;
 import main.menurpg.menagers.FileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -50,6 +50,6 @@ public final class MenuRPGPlugin extends JavaPlugin implements @NotNull Listener
 
     @Override
     public void onDisable() {
-        ActionbarMenager.close();
+        ActionbarManager.close();
     }
 }

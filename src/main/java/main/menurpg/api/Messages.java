@@ -26,7 +26,7 @@ public enum Messages {
     }
 
 
-    public String getmassage(Boolean preffix) {
+    public String getmessage(Boolean preffix) {
         if (FileManager.Files.LANGUAGE.getFile().getString(path) == null) {
             return Color.parseHexString(defaultMessage);
         } else {
@@ -34,7 +34,7 @@ public enum Messages {
         }
     }
 
-    public String getmassage() {
+    public String getmessage() {
         return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + FileManager.Files.LANGUAGE.getFile().getString(path, defaultMessage));
 
     }

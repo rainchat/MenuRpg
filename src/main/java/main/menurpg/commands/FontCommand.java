@@ -1,7 +1,7 @@
 package main.menurpg.commands;
 
 import main.menurpg.api.Messages;
-import main.menurpg.menagers.ActionbarMenager;
+import main.menurpg.menagers.ActionbarManager;
 import main.menurpg.menagers.FileManager;
 import main.menurpg.menagers.PlayerData;
 import org.bukkit.command.Command;
@@ -27,10 +27,10 @@ public class FontCommand implements CommandExecutor {
             if (args[0].equalsIgnoreCase("reload")) {
                 if (player.hasPermission("rpgmenu.admin")) {
                     fileManager.reloadAllFiles();
-                    sender.sendMessage(Messages.RELOAD.getmassage());
+                    sender.sendMessage(Messages.RELOAD.getmessage());
                     return true;
                 } else {
-                    sender.sendMessage(Messages.NO_PERMISSION.getmassage());
+                    sender.sendMessage(Messages.NO_PERMISSION.getmessage());
                     return true;
                 }
             }
@@ -39,11 +39,11 @@ public class FontCommand implements CommandExecutor {
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("openmenu")) {
                 if (player.hasPermission("rpgmenu.admin")) {
-                    ActionbarMenager.addPlayer(player, args[1]);
+                    ActionbarManager.addPlayer(player, args[1]);
 
                     //ActionbarEvents.start();
                 } else {
-                    sender.sendMessage(Messages.NO_PERMISSION.getmassage());
+                    sender.sendMessage(Messages.NO_PERMISSION.getmessage());
                 }
 
             }

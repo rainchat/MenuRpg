@@ -1,6 +1,6 @@
 package main.menurpg.utility;
 
-import main.menurpg.menagers.ActionbarMenager;
+import main.menurpg.menagers.ActionbarManager;
 import main.menurpg.MenuRPGPlugin;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
@@ -50,11 +50,11 @@ public class Executor {
                 p.performCommand(action);
                 break;
             case "closemenu":
-                ActionbarMenager.removePlayer(p);
+                ActionbarManager.removePlayer(p);
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(""));
                 break;
             case "openmenu":
-                ActionbarMenager.addPlayer(p, action);
+                ActionbarManager.addPlayer(p, action);
         }
     }
 }

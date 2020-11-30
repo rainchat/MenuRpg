@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 
 import java.util.*;
 
-public class ActionbarMenager {
+public class ActionbarManager {
     static private int tusk;
     static private HashMap<Player, PlayerData> PlayerDate = new HashMap<>();
     private static final FileManager fileManager = FileManager.getInstance();
@@ -86,7 +86,7 @@ public class ActionbarMenager {
                 List<String> command = new ArrayList<>();
                 command = file.getStringList("scrolls." + s + ".actions");
 
-                Executor test = new Executor(command, player);
+                Executor commands = new Executor(command, player);
                 return;
             }
 
