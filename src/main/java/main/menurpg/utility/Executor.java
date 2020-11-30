@@ -1,7 +1,6 @@
 package main.menurpg.utility;
 
-import main.menurpg.events.ActionBar;
-import main.menurpg.fontmenu.FontMenu;
+import main.menurpg.menagers.ActionbarMenager;
 import main.menurpg.MenuRPGPlugin;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
@@ -9,13 +8,11 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Executor {
-    private final FontMenu fontMenu = new FontMenu();
     private final List<String> cmd;
     private final Player p;
 
@@ -36,6 +33,7 @@ public class Executor {
                 s = PlaceholderAPI.setPlaceholders(p, s);
             }
             Matcher result = ACTION_PATTERN.matcher(s);
+            result.find();
             action(result.group(1), result.group(3));
         }
     }
@@ -46,18 +44,17 @@ public class Executor {
                 p.sendMessage(action);
                 break;
             case "console":
-                MenuRPGPlugin.getPlugin(MenuRPGPlugin.class).getServer().dispatchCommand(MenuRPGPlugin.getPlugin(MenuRPGPlugin.class).getServer().getConsoleSender(), action);
+                MenuRPGPlugin.INSTANCE.getServer().dispatchCommand(MenuRPGPlugin.INSTANCE.getServer().getConsoleSender(), action);
                 break;
             case "player":
                 p.performCommand(action);
                 break;
             case "closemenu":
-                fontMenu.removePlayer(p);
+                ActionbarMenager.removePlayer(p);
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(""));
                 break;
             case "openmenu":
-                fontMenu.addPlayer(p, action);
-                ActionBar.start();
+                ActionbarMenager.addPlayer(p, action);
         }
     }
 }

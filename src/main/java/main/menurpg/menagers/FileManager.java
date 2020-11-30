@@ -1,4 +1,4 @@
-package main.menurpg.filemenager;
+package main.menurpg.menagers;
 
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -35,7 +35,7 @@ public class FileManager {
      * @param plugin The plugin this is getting loading for.
      */
     public FileManager setup(Plugin plugin) {
-        prefix = "[" + plugin.getName() + "] ";
+        prefix = "§2[" + plugin.getName() + "]§r ";
         this.plugin = plugin;
         if (!plugin.getDataFolder().exists()) {
             plugin.getDataFolder().mkdirs();
@@ -53,14 +53,14 @@ public class FileManager {
                     InputStream jarFile = getClass().getResourceAsStream("/" + file.getFileJar());
                     copyFile(jarFile, serverFile);
                 } catch (Exception e) {
-                    if (log) System.out.println(prefix + "Failed to load file: " + file.getFileName());
+                    if (log) System.out.println(prefix + "Failed to load file: §c" + file.getFileName());
                     e.printStackTrace();
                     continue;
                 }
             }
             files.put(file, newFile);
             configurations.put(file, YamlConfiguration.loadConfiguration(newFile));
-            if (log) System.out.println(prefix + "Successfully loaded " + file.getFileName());
+            if (log) System.out.println(prefix + "Successfully loaded §a" + file.getFileName());
         }
         //Starts to load all the custom files.
         if (homeFolders.size() > 0) {
@@ -76,7 +76,7 @@ public class FileManager {
                                 if (file.exists()) {
                                     customFiles.add(file);
                                     if (log)
-                                        System.out.println(prefix + "Loaded new custom file: " + homeFolder + "/" + name + ".");
+                                        System.out.println(prefix + "Loaded new custom file: §a" + homeFolder + "/" + name + ".");
                                 }
                             }
                         }

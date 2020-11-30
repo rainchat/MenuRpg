@@ -1,7 +1,7 @@
 package main.menurpg.events;
 
 import main.menurpg.api.Messages;
-import main.menurpg.filemenager.FileManager;
+import main.menurpg.menagers.FileManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

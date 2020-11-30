@@ -1,43 +1,43 @@
 # Actions that can be used:
 #
 # Write to player - tell: message
-# Run command via console - console: command
-# Run command from player - player: command
+# Run command via console - console:command
+# Run command from player - player:command
 # Close menu - closemenu: 1
-# Open another menu - openmenu: <menu name>
+# Open another menu - openmenu:<menu name>
 #
 # To Open / Close the menu use shift + F
 #
-# For versions 1.3
-# Limitations on the number of charrs in the menu - 13
+# For versions 1.5
+# Limitations on the number of charrs in the menu - 14
 # Support support for Russian and English charrs (all unknown letters are replaced with spaces)
+
+settings:
+  menu-lines: 5
+
+
 scrolls:
   spawn:
     name: spawn
     actions:
-      - 'closemenu: 1'
+      - 'closemenu:'
       - 'player: spawn'
   home:
     name: home
     actions:
-      - 'player: home'
-      - 'closemenu: 1'
+      - 'player:home'
+      - 'closemenu:'
   shop:
     name: shop
     actions:
-      - 'player: warp shop'
-      - 'closemenu: 1'
+      - 'player:warp shop'
+      - 'closemenu:'
   pvp:
     name: pvp
     actions:
-      - 'player: warp pvp'
+      - 'player:warp pvp'
       - 'closemenu: 1'
-  parkour:
-    name: parkour
-    actions:
-      - 'closemenu: 1'
-      - 'tell: &7parkour'
   back:
     name: back
     actions:
-      - 'openmenu: mainmenu'
+      - 'openmenu:mainmenu'

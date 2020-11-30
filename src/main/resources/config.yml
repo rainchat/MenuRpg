@@ -1,5 +1,13 @@
-#Menu open on action "shift + F"
+#####################################################
+# Menu open on action "shift + F"
 # permissions to open rpgmenu.use
+#####################################################
+#   Permissons          |         Command
+# /rpgmenu reload       |       rpgmenu.admin
+# /rpgmenu openmenu     |       rpgmenu.admin
+# /rpgmenu rpgresourse  |       rpgmenu.rp.command
+#####################################################
+
 MainMenu: mainmenu
 
 # do not touch these settings if you do not know what you are doing
@@ -13,10 +21,10 @@ settings:
 Resoursepack:
 
   # Define your Direct-Download-Link to your Resource Pack
-  download-link: https://www.dropbox.com/s/ce9sh5cwn0t63w5/rpgmenu.zip?dl=1
+  download-link: https://www.dropbox.com/s/gocd9c433rk2m34/RpgMenu.zip?dl=1
 
   #download resource pack at join or no
-  download-when-join: true
+  download-when-join: false
 
   #kick the player if he has not downloaded the resource
-  kick-on-deny: true
+  kick-on-deny: false

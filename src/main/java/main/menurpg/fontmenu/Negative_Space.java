@@ -1,6 +1,6 @@
 package main.menurpg.fontmenu;
 
-import main.menurpg.filemenager.FileManager;
+import main.menurpg.menagers.FileManager;
 
 import java.util.Objects;
 

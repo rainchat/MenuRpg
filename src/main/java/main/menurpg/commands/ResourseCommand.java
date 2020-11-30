@@ -1,6 +1,6 @@
 package main.menurpg.commands;
 
-import main.menurpg.filemenager.FileManager;
+import main.menurpg.menagers.FileManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

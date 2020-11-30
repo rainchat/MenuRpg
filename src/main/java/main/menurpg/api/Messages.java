@@ -1,6 +1,6 @@
 package main.menurpg.api;
 
-import main.menurpg.filemenager.FileManager;
+import main.menurpg.menagers.FileManager;
 import main.menurpg.utility.Color;
 
 public enum Messages {
@@ -35,10 +35,7 @@ public enum Messages {
     }
 
     public String getmassage() {
-        if (FileManager.Files.LANGUAGE.getFile().getString(path) == null) {
-            return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + defaultMessage);
-        } else {
-            return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + FileManager.Files.LANGUAGE.getFile().getString(path));
-        }
+        return Color.parseHexString(FileManager.Files.LANGUAGE.getFile().getString("Preffix") + FileManager.Files.LANGUAGE.getFile().getString(path, defaultMessage));
+
     }
 }
